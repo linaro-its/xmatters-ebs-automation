@@ -1,0 +1,18 @@
+{
+  "name": "xmatters-ebs-automation",
+  "version": "1.0.0",
+  "description": "Collection of scripts used in xMatters workflow",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linaro-its/xmatters-ebs-automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linaro-its/xmatters-ebs-automation/issues"
+  },
+  "homepage": "https://github.com/linaro-its/xmatters-ebs-automation#readme",
+  "devDependencies": {
+    "eslint": "^7.14.0"
+  }
+}
