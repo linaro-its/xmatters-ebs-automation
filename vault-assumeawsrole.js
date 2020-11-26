@@ -48,7 +48,7 @@ try {
             output.AWSSessionToken = vaultRoleBody.data.security_token;
             output.OKToProceed = true;
         } else {
-            throw new Error("Failed to assume Vault/AWS role");
+            throw new Error("Failed to assume Vault/AWS role '"+input.VaultRole+"'");
         }
     } else {
         throw new Error("Failed to authenticate to Vault");
