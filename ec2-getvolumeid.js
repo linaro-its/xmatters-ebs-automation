@@ -116,21 +116,30 @@ try {
     var json_desc = JXON.parse(description);
     
     var devs = json_desc.describeinstancesresponse.reservationset.item.instancesset.item.blockdevicemapping.item;
-    for (var i=0, size=devs.length; i < size; i++) {
-        var item = devs[i];
-        if (item.devicename === mapped_device) {
-            output.VolumeId = item.ebs.volumeid;
+    // If there is only one attached drive, JXON returns a dictionary rather than an array.
+    if (Array.isArray(devs)) {
+        for (var i=0, size=devs.length; i < size; i++) {
+            var item = devs[i];
+            if (item.devicename === mapped_device) {
+                output.VolumeId = item.ebs.volumeid;
+                found_device = true;
+                break;
+            }
+        }
+    } else {
+        // Single device
+        if (devs.devicename === mapped_device) {
+            output.VolumeId = devs.ebs.volumeid;
             found_device = true;
-            break;
         }
     }
-    
+
     if (!found_device) {
         throw new Error("Unable to find device "+device+" (a.k.a. "+mapped_device+") attached to instance");
     }
 
     output.Matched = found_device;
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.Matched = false;
 }
