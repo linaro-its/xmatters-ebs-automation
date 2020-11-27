@@ -180,10 +180,6 @@ try {
     const secret_key = input.AWSSecretKey;
     const region = input.AWSRegion;
     var device = input.EBSDevice;
-    // Need to alter the device name if it isn't a NVMe device
-    if (!device.startsWith("nvme")) {
-        device = 's' + device.substr(2);
-    }
     
     var result = runCommand(access_key, secret_key, region, input.InstanceId, "sudo cloud-init single -n growpart && sudo resize2fs /dev/"+device);
     output.CommandSuccess = result[0];
