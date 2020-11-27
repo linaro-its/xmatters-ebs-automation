@@ -189,6 +189,6 @@ try {
     output.CommandSuccess = result[0];
     output.ErrorMessage = result[1];
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.CommandSuccess = false;
 }

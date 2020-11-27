@@ -144,6 +144,6 @@ try {
         throw new Error("The volume is not in a state where it can be expanded at this time ("+mod_item.modificationstate+")");
     }
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.OKToModify = false;
 }

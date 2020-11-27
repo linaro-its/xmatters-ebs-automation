@@ -54,6 +54,6 @@ try {
         throw new Error("Failed to authenticate to Vault");
     }
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.OKToProceed = false;
 }

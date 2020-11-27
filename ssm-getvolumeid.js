@@ -204,6 +204,6 @@ try {
         throw new Error(result[1]);
     }
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.Matched = false;
 }

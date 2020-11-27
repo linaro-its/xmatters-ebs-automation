@@ -149,6 +149,6 @@ try {
     output.OKToProceed = true;
     output.NewSize = volume_size;
 } catch (error) {
-    output.ErrorMessage = error;
+    output.ErrorMessage = error.message;
     output.OKToProceed = false;
 }
